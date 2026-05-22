@@ -314,3 +314,35 @@ Ctrl+C
 ```
 
 ---
+
+# 5. Convert COCOA ROOT to Phoenix JSON
+
+Start Apptainer:
+
+apptainer shell --bind ~/cocoa_project:/work ~/containers/cocoa-hep.sif
+
+Go to the converter:
+
+cd /root/COCOA/COCOA/phoenix/event
+
+Run the converter using the host micromamba Python:
+
+/.automount/home/home__home1/institut_3a/pesch/micromamba/envs/cocoa_py/bin/python \
+dump_phoenix_eventdata.py \
+-i /work/runs/my_run/output.root \
+-o /work/runs/my_run/cocoa_event_1.json \
+-n 1
+
+Check:
+
+ls -lh /work/runs/my_run/cocoa_event_1.json
+
+Exit:
+
+exit
+
+# 6. Open COCOA event with Phoenix
+
+Start Phoenix
+
+load event json and optionally geometry files
